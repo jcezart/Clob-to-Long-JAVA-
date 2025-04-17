@@ -117,9 +117,9 @@ public class ClobtoLong {
             // Extrai e limpa todos os campos "body"
             String texto = extractAndCleanAllBodies(entrada);
 
-            String sql = "UPDATE PLS_ATENDIMENTO_HISTORICO PLH " +
-                        "SET PLH.DS_HISTORICO_LONG = ? " +
-                        "WHERE PLH.NR_SEQUENCIA = ?";
+            String sql = "UPDATE TABELA TB " +
+                        "SET TB.COLUMN = ? " +
+                        "WHERE TB.PARAMETER = ?";
 
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, texto);
@@ -147,9 +147,9 @@ public class ClobtoLong {
             // Extrai e limpa todos os campos "body"
             String texto = extractAndCleanAllBodies(entrada);
 
-            String sql = "UPDATE SAC_BOLETIM_OCORRENCIA SBO " +
-                        "SET SBO.DS_OCORRENCIA_LONGA = ? " +
-                        "WHERE SBO.NR_SEQUENCIA = ?";
+            String sql = "UPDATE UPDATE TABELA TB2 " +
+                        "SET TB2.COLUMN = ? " +
+                        "WHERE TB2.PARAMETER = ?";
 
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, texto);
