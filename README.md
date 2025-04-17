@@ -7,7 +7,7 @@ This utility is particularly useful for applications that need to handle large t
 CLOB to String Conversion: Converts Oracle CLOB data to a Java String for processing.
 Text Cleaning: Removes HTML tags, Markdown syntax (links, images, headers), URLs, confidentiality disclaimers, and excessive whitespace or special characters.
 JSON Parsing: Extracts and processes all "body" fields from a JSON array of comments.
-Database Updates: Provides methods to update specific columns in Oracle database tables (PLS_ATENDIMENTO_HISTORICO and SAC_BOLETIM_OCORRENCIA) with the cleaned text.
+Database Updates: Provides methods to update specific columns in Oracle database tables (TABLE1 and TABLE2) with the cleaned text.
 Error Handling: Includes robust exception handling for SQL and JSON processing errors.
 Connection Management: Properly manages database connections and resources using try-catch-finally blocks.
 
@@ -16,23 +16,23 @@ The utility consists of a single Java class, ClobtoLong, with the following key 
 
 limparTexto(String textoOriginal): Cleans the input text by removing HTML, Markdown, URLs, confidentiality notices, and excessive whitespace, while normalizing punctuation and formatting.
 extractAndCleanAllBodies(Clob entrada): Extracts all "body" fields from the JSON in the CLOB, decodes escape characters, and applies the limparTexto cleaning process.
-UpdatePlsHistLong(Clob entrada, int chave): Updates the DS_HISTORICO_LONG column in the PLS_ATENDIMENTO_HISTORICO table for a given sequence number (NR_SEQUENCIA).
-UpdateSacBoletimOcorrencia(Clob entrada, int chave): Updates the DS_OCORRENCIA_LONGA column in the SAC_BOLETIM_OCORRENCIA table for a given sequence number (NR_SEQUENCIA).
+UpdateTable(Clob entrada, int chave): Updates the COLUMN column in the TABLE table for a given sequence number (PARAMETER).
+UpdateTable2(Clob entrada, int chave): Updates the COLUMN2 column in the TABLE2 table for a given sequence number (PARAMETER2).
 
 ## Dependencies 🔗
 
 Java: JDK 8 or higher.
 Oracle JDBC Driver: Requires the Oracle JDBC driver (oracle.jdbc.driver.OracleDriver) for database connectivity.
-Database: Oracle Database with access to the PLS_ATENDIMENTO_HISTORICO and SAC_BOLETIM_OCORRENCIA tables.
+Database: Oracle Database with access to the TABLE and TABLE2 tables.
 
 ## Usage 🛠️
 
 Compile the Java Source:Deploy the UtilClobToLong Java source to your Oracle database using the provided create or replace and compile java source statement.
 
-Invoke Methods:Call the static methods UpdatePlsHistLong or UpdateSacBoletimOcorrencia from your PL/SQL code, passing a CLOB containing JSON data and an integer key (NR_SEQUENCIA).
+Invoke Methods:Call the static methods UpdateTable1 or UpdateTable2from your PL/SQL code, passing a CLOB containing JSON data and an integer key (PARAMETER).
 Example PL/SQL invocation:
 BEGIN
-    UtilClobToLong.UpdatePlsHistLong(my_clob, 12345);
+    UtilClobToLong.UpdateTable1(my_clob, 12345);
 END;
 
 
@@ -69,6 +69,6 @@ Calling UpdatePlsHistLong(my_clob, 12345) will:
 
 Extract and clean the "body" fields.
 Produce a cleaned string: Hello world! This is a test with confidential info.
-Update the DS_HISTORICO_LONG column in the PLS_ATENDIMENTO_HISTORICO table for NR_SEQUENCIA = 12345.
+Update the COLUMN column in the TABLE table for PARAMETER = 12345.
 
 
