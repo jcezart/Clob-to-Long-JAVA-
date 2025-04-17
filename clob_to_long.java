@@ -107,7 +107,7 @@ public class ClobtoLong {
         }
     }
 
-    public static void UpdatePlsHistLong(Clob entrada, int chave) throws SQLException {
+    public static void UpdateTable(Clob entrada, int chave) throws SQLException {
         Connection con = null;
         PreparedStatement pstmt = null;
 
@@ -117,7 +117,7 @@ public class ClobtoLong {
             // Extrai e limpa todos os campos "body"
             String texto = extractAndCleanAllBodies(entrada);
 
-            String sql = "UPDATE TABELA TB " +
+            String sql = "UPDATE TABLE TB " +
                         "SET TB.COLUMN = ? " +
                         "WHERE TB.PARAMETER = ?";
 
@@ -137,7 +137,7 @@ public class ClobtoLong {
         }
     }
 
-    public static void UpdateSacBoletimOcorrencia(Clob entrada, int chave) throws SQLException {
+    public static void UpdateTable2(Clob entrada, int chave) throws SQLException {
         Connection con = null;
         PreparedStatement pstmt = null;
 
@@ -147,7 +147,7 @@ public class ClobtoLong {
             // Extrai e limpa todos os campos "body"
             String texto = extractAndCleanAllBodies(entrada);
 
-            String sql = "UPDATE UPDATE TABELA TB2 " +
+            String sql = "UPDATE UPDATE TABLE2 TB2 " +
                         "SET TB2.COLUMN = ? " +
                         "WHERE TB2.PARAMETER = ?";
 
